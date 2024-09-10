@@ -74,9 +74,12 @@ class PointsController extends Controller
     public function destroy(string $id)
     {
         $point = Point::findOrFail($id);
-
+    
         $point->delete();
-
-        return redirect('/'); 
+    
+        return response()->json([
+            'message' => 'Ponto excluído com sucesso!',
+            'point' => $point 
+        ]); 
     }
 }
